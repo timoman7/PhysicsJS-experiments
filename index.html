@@ -9,21 +9,7 @@ Physics(function(world){
   var viewWidth = 500;
   var viewHeight = 300;
 
-  var renderer = Physics.renderer('canvas', {
-    el: 'viewport',
-    width: viewWidth,
-    height: viewHeight,
-    meta: false, // don't display meta data
-    styles: {
-        // set colors for the circle bodies
-        'circle' : {
-            strokeStyle: '#351024',
-            lineWidth: 1,
-            fillStyle: '#d33682',
-            angleIndicator: '#351024'
-        }
-    }
-  });
+  var renderer = Physics.renderer('canvas');
 
   // add the renderer
   world.add( renderer );
