@@ -62,7 +62,8 @@ Physics(function(world){
 
   // subscribe to ticker to advance the simulation
   Physics.util.ticker.on(function( time, dt ){
-
+      document.getElementsByClassName('pjs-layer-main')[0].width="500";
+      document.getElementsByClassName('pjs-layer-main')[0].height="600";
       world.step( time );
   });
 
