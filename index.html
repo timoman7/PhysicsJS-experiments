@@ -18,7 +18,10 @@ Physics(function(world){
   var viewWidth = 500;
   var viewHeight = 600;
 
-  var renderer = Physics.renderer('canvas');
+  var renderer = Physics.renderer('canvas',{
+  width: 600,
+  height: 600,
+  });
 
   // add the renderer
   world.add( renderer );
