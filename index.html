@@ -3,7 +3,11 @@
 <head>
 <title>PhysicsJS</title>
 <script src="physicsjs-full.js"></script>
-<script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <canvas id="viewport"></canvas>
+  <script>
 Physics(function(world){
 
   var viewWidth = 500;
@@ -56,9 +60,5 @@ Physics(function(world){
 
 });  
 </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  <canvas id="viewport"></canvas>
 </body>
 </html>
