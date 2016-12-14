@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
 </head>
 <body>
-  <canvas id="viewport" style="width: 800px; height: 800px;"></canvas>
-  <div id=""><input id="myScript" value="" type="textbox"/><button id="updateBtn" onclick="changeScript()">Update</button></div>
+  <div id="myDiv"><input id="myScript" value="" type="textbox"/><button id="updateBtn" onclick="changeScript()">Update</button></div>
   <script>
     var changeScript=function(){
       var theInput = document.getElementById("myScript");
@@ -55,7 +54,7 @@ Physics(function(world){
   try{
     userFunction();
   }catch(err){
-    
+    console.warn(err);
   }
   // ensure objects bounce when edge collision is detected
   world.add( Physics.behavior('body-impulse-response') );
