@@ -11,7 +11,7 @@
     var changeScript=function(){
       var theInput = document.getElementById("myScript");
       userFunction=function(){
-        eval(theInput.value);
+        eval(theInput.value.replace(/world/g,"worlda"));
       };
     };
     var worlda;
