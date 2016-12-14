@@ -81,9 +81,10 @@ worlda=world;
   }
   
         world.add(Physics.behavior('interactive', { el: renderer.container }));
+    
     var attractor = Physics.behavior('attractor', {
         order: 0,
-        strength: .002
+        strength: 0.002
     });
     world.on({
         'interact:poke': function( pos ){
