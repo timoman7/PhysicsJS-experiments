@@ -49,6 +49,28 @@ Physics(function(world){
         radius: 20
       })
   );
+  world.add( Physics.body('convex-polygon', {
+    x: 250,
+    y: 50,
+    vx: 0.05,
+    vertices: [
+        {x: 0, y: 80},
+        {x: 60, y: 40},
+        {x: 60, y: -40},
+        {x: 0, y: -80}
+    ]
+}) );
+  world.add( Physics.body('convex-polygon', {
+    x: 350,
+    y: 50,
+    vx: 0.05,
+    vertices: [
+        {x: 0, y: 80},
+        {x: 60, y: 40},
+        {x: 60, y: -40},
+        {x: 0, y: -80}
+    ]
+}) );
   try{
     userFunction();
   }catch(err){
