@@ -80,6 +80,7 @@ worlda=world;
     console.warn(err);
   }
   
+        world.add(Physics.behavior('interactive', { el: renderer.container }));
     var attractor = Physics.behavior('attractor', {
         order: 0,
         strength: .002
