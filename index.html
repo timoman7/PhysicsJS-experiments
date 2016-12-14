@@ -79,10 +79,30 @@ worlda=world;
   }catch(err){
     console.warn(err);
   }
+  
+    world.on({
+        'interact:poke': function( pos ){
+            world.wakeUpAll();
+            attractor.position( pos );
+            world.add( attractor );
+        }
+        ,'interact:move': function( pos ){
+            attractor.position( pos );
+        }
+        ,'interact:release': function(){
+            world.wakeUpAll();
+            world.remove( attractor );
+        }
+    });
   // ensure objects bounce when edge collision is detected
   world.add( Physics.behavior('body-impulse-response') );
   world.add( Physics.behavior('body-collision-detection') );
 world.add( Physics.behavior('sweep-prune') );
+  
+    world.add([
+        Physics.behavior('interactive', { el: renderer.container })
+        ,Physics.behavior('newtonian', { strength: .5 })
+    ]);
   // add some gravity
   world.add( Physics.behavior('constant-acceleration') );
 
