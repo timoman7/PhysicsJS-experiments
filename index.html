@@ -10,7 +10,9 @@
     var userFunction=function(){};
     var changeScript=function(){
       var theInput = document.getElementById("myScript");
-      userFunction=eval(theInput);
+      userFunction=function(){
+        eval(theInput);
+      };
     };
 Physics(function(world){
 
