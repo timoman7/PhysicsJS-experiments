@@ -8,9 +8,10 @@
 <body>
   <div id="myDiv"><input id="myScript" value="" type="textbox"/><button id="updateBtn" onclick="changeScript()">Update</button></div>
   <script>
+    var userScript=function(){};
     var changeScript=function(){
       var theInput = document.getElementById("myScript");
-      eval(theInput);
+      userScript=eval(theInput);
     };
 Physics(function(world){
 
