@@ -87,18 +87,18 @@ worlda=world;
 }) );
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
-      world.subscribe('step', function( data ){
+      world.on('step', function( data ){
         console.log(data);
             wheely.spin( -0.03 );
             // only execute callback once
-            world.unsubscribe( 'step', data.handler );
+            world.off( 'step', data.handler );
         });
     }else if(e.keyCode == 39 && e.target == document.body){
-      world.subscribe('step', function( data ){
+      world.on('step', function( data ){
         console.log(data);
             wheely.spin( 0.03 );
             // only execute callback once
-            world.unsubscribe( 'step', data.handler );
+            world.off( 'step', data.handler );
         });
     }
   };
