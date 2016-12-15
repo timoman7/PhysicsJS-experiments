@@ -63,6 +63,9 @@ worlda=world;
         vy: 0.01, // velocity in y-direction
         radius: 20
       });
+    var rigidConstraints = Physics.behavior('verlet-constraints', {
+        iterations: 3
+    });
   world.add(wheely);
   world.add( Physics.body('convex-polygon', {
     x: 250,
@@ -117,7 +120,11 @@ var car=Physics.body('compound',{
     tire2
   ]
 });
-  world.add(car);
+  rigidConstraints.distanceConstraint(tire1,chassis,0.6)
+  rigidConstraints.distanceConstraint(tire2,chassis,0.6)
+  world.add(chassis);
+  world.add(tire1);
+  world.add(tire2);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
       world.on('step', function( data ){
