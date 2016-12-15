@@ -132,8 +132,8 @@ var tire2=Physics.body('wheel', {
   hookObject(car);
   var roller=[];
   for(var t=0;t<=12;t++){
-    var sx=(20*(sin(t*3)*10))+100;
-    var sy=(20*(cos(t*3)*10))+100;
+    var sx=(20*(Math.sin(t*3)*10))+100;
+    var sy=(20*(Math.cos(t*3)*10))+100;
     roller.push(Physics.body('circle', {
       x:sx,
       y:sy,
