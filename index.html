@@ -42,17 +42,27 @@ worlda=world;
       restitution: 0.66,
       cof: 0.99
   }));
-
+  Physics.body('wheel', 'circle', function( parent ){
+        
+        return {
+            // no need for an init
+            
+            // spin the wheel at desired speed
+            spin: function( speed ){
+                // the wheels are spinning...
+                this.state.angular.vel = speed;
+            }
+        };
+    });
   // add a circle
-  world.add(
-      Physics.body('circle', {
+  var wheely=Physics.body('wheel', {
         x: 50, // x-coordinate
         y: 30, // y-coordinate
         vx: 0.2, // velocity in x-direction
         vy: 0.01, // velocity in y-direction
         radius: 20
-      })
-  );
+      });
+  world.add(wheely);
   world.add( Physics.body('convex-polygon', {
     x: 250,
     y: 50,
@@ -75,6 +85,23 @@ worlda=world;
         {x: 0, y: -80}
     ]
 }) );
+  keyPressed=function(){
+    if(keyCode===37){
+      world.subscribe('step', function( data ){
+        console.log(data);
+            wheely.spin( -0.03 );
+            // only execute callback once
+            world.unsubscribe( 'step', data.handler );
+        });
+    }else if(keyCode===39){
+      world.subscribe('step', function( data ){
+        console.log(data);
+            wheely.spin( 0.03 );
+            // only execute callback once
+            world.unsubscribe( 'step', data.handler );
+        });
+    }
+  };
   try{
     userFunction();
   }catch(err){
