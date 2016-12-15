@@ -111,8 +111,9 @@ var chassis=Physics.body('rectangle', {
   width:80,
   height:20
 });
-  rigidConstraints.distanceConstraint(tire1,chassis,0.6)
-  rigidConstraints.distanceConstraint(tire2,chassis,0.6)
+  rigidConstraints.distanceConstraint(tire1,chassis,0.6);
+  rigidConstraints.distanceConstraint(tire2,chassis,0.6);
+  rigidConstraints.distanceConstraint(tire1,tire2,0.6);
   world.add( rigidConstraints );
   world.add(chassis);
   world.add(tire1);
