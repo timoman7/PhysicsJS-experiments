@@ -128,10 +128,10 @@ var rightSide=Physics.body('rectangle', {
   height:20
 });
   var car=[leftSide,rightSide,chassis,tire1,tire2];
-  for(var i in car){
-    for(var j in car){
-      if(i !== j){
-        rigidConstraints.distanceConstraint(i,j,0.6);
+  for(var i=0;i<car.length;i++){
+    for(var j=0;j<car.length;j++){
+      if(car[i] !== car[j]){
+        rigidConstraints.distanceConstraint(car[i],car[j],0.6);
       }
     }
   }
