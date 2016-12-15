@@ -120,13 +120,29 @@ var tire2=Physics.body('wheel', {
       radius:5
     }));
 }
-  for(var i=0;i<car.length;i++){
-    for(var j=0;j<car.length;j++){
-      if(car[i] !== car[j]){
-        rigidConstraints.distanceConstraint(car[i],car[j],0.6);
+  var hookObject=function(obj){
+    for(var i=0;i<obj.length;i++){
+      for(var j=0;j<obj.length;j++){
+        if(obj[i] !== obj[j]){
+          rigidConstraints.distanceConstraint(obj[i],obj[j],0.6);
+        }
       }
     }
   }
+  hookObject(car);
+  var roller=[];
+  for(var t=0;t<=12;t++){
+    var sx=(20*(sin(t*3)*10))+100;
+    var sy=(20*(cos(t*3)*10))+100;
+    roller.push(Physics.body('circle', {
+      x:sx,
+      y:sy,
+      vx:0,
+      vy:0,
+      radius:5
+    }));
+  }
+  hookObject(roller);
   world.add( rigidConstraints );
   world.add(car);
   window.onkeydown=function(e){
