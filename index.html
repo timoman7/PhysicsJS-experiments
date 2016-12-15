@@ -136,9 +136,7 @@ var rightSide=Physics.body('rectangle', {
     }
   }
   world.add( rigidConstraints );
-  for(var i in car){
-    world.add(i);
-  }
+  world.add(car);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
       world.on('step', function( data ){
