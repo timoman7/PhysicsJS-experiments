@@ -153,17 +153,18 @@ var tire2=Physics.body('wheel', {
       world.on('step', function( data ){
         console.log(data);
             wheely.spin( -0.03 );
-            tire1.spin( -0.03 );
-            tire2.spin( -0.03 );
+            //tire1.spin( -0.03 );
+            //tire2.spin( -0.03 );
             // only execute callback once
             world.off( 'step', data.handler );
+        
         });
     }else if(e.keyCode == 39 && e.target == document.body){
       world.on('step', function( data ){
         console.log(data);
             wheely.spin( 0.03 );
-            tire1.spin( 0.03 );
-            tire2.spin( 0.03 );
+            //tire1.spin( 0.03 );
+            //tire2.spin( 0.03 );
             // only execute callback once
             world.off( 'step', data.handler );
         });
