@@ -105,13 +105,19 @@ var tire2=Physics.body('wheel', {
       });
   var car=[tire1,tire2];
   for(var xs=40;xs<=140;xs+=12){
-    car.push(Physics.body('rectangle', {
+    car.push(Physics.body('circle', {
       x:xs,
       y:10,
       vx:0.2,
       vy:0.01,
-      width:9,
-      height:20
+      radius:5
+    }));
+    car.push(Physics.body('circle', {
+      x:xs,
+      y:0,
+      vx:0.2,
+      vy:0.01,
+      radius:5
     }));
 }
   for(var i=0;i<car.length;i++){
