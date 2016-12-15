@@ -111,13 +111,34 @@ var chassis=Physics.body('rectangle', {
   width:80,
   height:20
 });
-  rigidConstraints.distanceConstraint(tire1,chassis,0.6);
-  rigidConstraints.distanceConstraint(tire2,chassis,0.6);
-  rigidConstraints.distanceConstraint(tire1,tire2,0.6);
+var leftSide=Physics.body('rectangle', {
+  x:30,
+  y:10,
+  vx:0.2,
+  vy:0.01,
+  width:15,
+  height:20
+});
+var rightSide=Physics.body('rectangle', {
+  x:150,
+  y:10,
+  vx:0.2,
+  vy:0.01,
+  width:15,
+  height:20
+});
+  var car=[leftSide,rightSide,chassis,tire1,tire2];
+  for(var i in car){
+    for(var j in car){
+      if(i !== j){
+        rigidConstraints.distanceConstraint(i,j,0.6);
+      }
+    }
+  }
   world.add( rigidConstraints );
-  world.add(chassis);
-  world.add(tire1);
-  world.add(tire2);
+  for(var i in car){
+    world.add(i);
+  }
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
       world.on('step', function( data ){
