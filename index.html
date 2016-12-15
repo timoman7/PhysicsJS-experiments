@@ -86,11 +86,45 @@ worlda=world;
         {x: 0, y: -80}
     ]
 }) );
+  var tire1=Physics.body('wheel', {
+        x: 50, // x-coordinate
+        y: 30, // y-coordinate
+        vx: 0.2, // velocity in x-direction
+        vy: 0.01, // velocity in y-direction
+        radius: 20
+      });
+var tire2=Physics.body('wheel', {
+        x: 130, // x-coordinate
+        y: 30, // y-coordinate
+        vx: 0.2, // velocity in x-direction
+        vy: 0.01, // velocity in y-direction
+        radius: 20
+      });
+var chassis=Physics.body('rectangle', {
+  x:90,
+  y:10,
+  vx:0.2,
+  vy:0.01,
+  width:80,
+  height:20
+});
+var car=Physics.body('compound',{
+  x:90,
+  y:25,
+  children:[
+    chassis,
+    tire1,
+    tire2
+  ]
+});
+  world.add(car);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
       world.on('step', function( data ){
         console.log(data);
             wheely.spin( -0.03 );
+            tire1.spin( -0.03 );
+            tire2.spin( -0.03 );
             // only execute callback once
             world.off( 'step', data.handler );
         });
@@ -98,6 +132,8 @@ worlda=world;
       world.on('step', function( data ){
         console.log(data);
             wheely.spin( 0.03 );
+            tire1.spin( 0.03 );
+            tire2.spin( 0.03 );
             // only execute callback once
             world.off( 'step', data.handler );
         });
