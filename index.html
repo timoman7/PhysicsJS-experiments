@@ -85,15 +85,15 @@ worlda=world;
         {x: 0, y: -80}
     ]
 }) );
-  keyPressed=function(){
-    if(keyCode===37){
+  window.onkeydown=function(e){
+    if(e.keyCode == 37 && e.target == document.body){
       world.subscribe('step', function( data ){
         console.log(data);
             wheely.spin( -0.03 );
             // only execute callback once
             world.unsubscribe( 'step', data.handler );
         });
-    }else if(keyCode===39){
+    }else if(e.keyCode == 39 && e.target == document.body){
       world.subscribe('step', function( data ){
         console.log(data);
             wheely.spin( 0.03 );
