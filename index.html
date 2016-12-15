@@ -144,6 +144,7 @@ var tire2=Physics.body('wheel', {
   }
   hookObject(roller);
   world.add( rigidConstraints );
+  world.add(roller);
   world.add(car);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
