@@ -103,41 +103,17 @@ var tire2=Physics.body('wheel', {
         vy: 0.01, // velocity in y-direction
         radius: 20
       });
-var chassis=Physics.body('rectangle', {
-  x:90,
-  y:10,
-  vx:0.2,
-  vy:0.01,
-  width:80,
-  height:20
-});
-var leftSide=Physics.body('rectangle', {
-  x:40,
-  y:10,
-  vx:0.2,
-  vy:0.01,
-  width:15,
-  height:20
-});
-var rightSide=Physics.body('rectangle', {
-  x:140,
-  y:10,
-  vx:0.2,
-  vy:0.01,
-  width:15,
-  height:20
-});
-
-var carBase=Physics.body('compound', {
-  x:90,
-  y:10,
-  children:[
-    rightSide,
-    leftSide,
-    chassis
-  ]
-});
-  var car=[leftSide,rightSide,chassis,tire1,tire2,carBase];
+  var car=[tire1,tire2];
+  for(var xs=90;xs<=140;xs++){
+    car.push(Physics.body('rectangle', {
+      x:xs,
+      y:10,
+      vx:0.2,
+      vy:0.01,
+      width:15,
+      height:20
+    }));
+}
   for(var i=0;i<car.length;i++){
     for(var j=0;j<car.length;j++){
       if(car[i] !== car[j]){
