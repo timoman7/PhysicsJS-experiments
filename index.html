@@ -132,6 +132,7 @@ var tire2=Physics.body('wheel', {
     }
   }
   //hookObject(car);
+  /*
   var roller=[];
   for(var t=1;t<=22;t++){
     var sx=(25*(Math.sin(t*5.9976)))+200;
@@ -144,9 +145,22 @@ var tire2=Physics.body('wheel', {
       radius:2
     }));
   }
-  hookObject(roller);
+  */
+  //hookObject(roller);
+  var jellyCube=[];
+  for(var sx=0;sx<=30;sx++){
+    for(var sy=0;sy<=30;sy++){
+      jellyCube.push(Physics.body('circle', {
+        x:(sx*8)+200,
+        y:(sy*8)+200,
+        vx:0,
+        vy:0,
+        radius:4
+      }));
+    }
+  }
   world.add( rigidConstraints );
-  world.add(roller);
+  //world.add(roller);
   //world.add(car);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
