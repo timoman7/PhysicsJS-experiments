@@ -17,9 +17,14 @@
     };
     var rigidConstraints;
     var hookObject;
+    var stringObject;
     var wheely;
     var worlda;
     var jellyCube=[];
+    var dist=function(x1,y1,x2,y2){
+      var ret = (((x2-x1)^2)+((y2-y1)^2))^0.5;
+      return ret;
+    };
 Physics(function(world){
 worlda=world;
   var viewWidth = 1000;
@@ -134,6 +139,17 @@ var tire2=Physics.body('wheel', {
       }
     }
   }
+  stringObject=function(obj,thresh){
+    for(var i=0;i<obj.length;i++){
+      for(var j=0;j<obj.length;j++){
+        if(obj[i] !== obj[j]){
+          if(dist(obj[i].state.pos.x,obj[i].state.pos.y,obj[j].state.pos.x,obj[j].state.pos.y)<thresh){
+            rigidConstraints.distanceConstraint(obj[i],obj[j],0.6);
+          }
+        }
+      }
+    }
+  }
   //hookObject(car);
   /*
   var roller=[];
@@ -181,7 +197,7 @@ var tire2=Physics.body('wheel', {
       }
     }
   }
-  hookObject(jellyCube);
+  stringObject(jellyCube);
   
   world.add( rigidConstraints );
   world.add(jellyCube);
