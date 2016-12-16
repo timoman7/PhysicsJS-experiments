@@ -148,11 +148,11 @@ var tire2=Physics.body('wheel', {
   */
   //hookObject(roller);
   var jellyCube=[];
-  for(var sx=0;sx<=30;sx++){
-    for(var sy=0;sy<=30;sy++){
+  for(var sx=0;sx<=15;sx++){
+    for(var sy=0;sy<=15;sy++){
       jellyCube.push(Physics.body('circle', {
-        x:(sx*8)+200,
-        y:(sy*8)+200,
+        x:(sx*10)+200,
+        y:(sy*10)+200,
         vx:0,
         vy:0,
         radius:4
