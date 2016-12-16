@@ -147,10 +147,11 @@ var tire2=Physics.body('wheel', {
   }
   */
   //hookObject(roller);
+  
   var jellyCube=[];
   for(var sx=0;sx<6;sx++){
     for(var sy=0;sy<6;sy++){
-      if((!(sx>1&&sx<4))&&(!(sy>1&&sy<4))){
+      if((!(sx>0&&sx<5))&&(!(sy>0&&sy<5))){
         jellyCube.push(Physics.body('circle', {
           x:(sx*14)+200,
           y:(sy*14)+200,
@@ -159,7 +160,7 @@ var tire2=Physics.body('wheel', {
           radius:4
         }));
       }
-      if((sy<2||sy>3)&&(sx>1&&sx<4)){
+      if((sy<1||sy>4)&&(sx>0&&sx<5)){
         jellyCube.push(Physics.body('circle', {
           x:(sx*14)+200,
           y:(sy*14)+200,
@@ -168,7 +169,7 @@ var tire2=Physics.body('wheel', {
           radius:4
         }));
       }
-      if((sx<2||sx>3)&&(sy>1&&sy<4)){
+      if((sx<1||sx>4)&&(sy>0&&sy<5)){
         jellyCube.push(Physics.body('circle', {
           x:(sx*14)+200,
           y:(sy*14)+200,
@@ -180,6 +181,7 @@ var tire2=Physics.body('wheel', {
     }
   }
   hookObject(jellyCube);
+  
   world.add( rigidConstraints );
   world.add(jellyCube);
   //world.add(roller);
