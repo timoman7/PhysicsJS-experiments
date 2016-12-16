@@ -15,6 +15,8 @@
         eval(theInput.value.replace(/world/g,"worlda"));
       };
     };
+    var rigidConstraints;
+    var hookObject;
     var wheely;
     var worlda;
 Physics(function(world){
@@ -63,7 +65,7 @@ worlda=world;
         vy: 0.01, // velocity in y-direction
         radius: 20
       });
-    var rigidConstraints = Physics.behavior('verlet-constraints', {
+    rigidConstraints = Physics.behavior('verlet-constraints', {
         iterations: 3
     });
   world.add(wheely);
@@ -122,7 +124,7 @@ var tire2=Physics.body('wheel', {
     }));
 }
 */
-  var hookObject=function(obj){
+  hookObject=function(obj){
     for(var i=0;i<obj.length;i++){
       for(var j=0;j<obj.length;j++){
         if(obj[i] !== obj[j]){
