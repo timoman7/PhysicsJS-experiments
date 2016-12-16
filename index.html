@@ -143,7 +143,7 @@ var tire2=Physics.body('wheel', {
     for(var i=0;i<obj.length;i++){
       for(var j=0;j<obj.length;j++){
         if(obj[i] !== obj[j]){
-          if(dist(obj[i].state.pos.x,obj[i].state.pos.y,obj[j].state.pos.x,obj[j].state.pos.y)<thresh){
+          if(Math.abs(dist(obj[i].state.pos.x,obj[i].state.pos.y,obj[j].state.pos.x,obj[j].state.pos.y))<thresh){
             rigidConstraints.distanceConstraint(obj[i],obj[j],0.6);
           }
         }
