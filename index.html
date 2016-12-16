@@ -159,7 +159,7 @@ var tire2=Physics.body('wheel', {
           radius:4
         }));
       }
-      if(sy<2||sy>3){
+      if((sy<2||sy>3)&&(sx>1&&sx<4)){
         jellyCube.push(Physics.body('circle', {
           x:(sx*14)+200,
           y:(sy*14)+200,
