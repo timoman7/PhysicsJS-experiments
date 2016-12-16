@@ -19,6 +19,7 @@
     var hookObject;
     var wheely;
     var worlda;
+    var jellyCube=[];
 Physics(function(world){
 worlda=world;
   var viewWidth = 1000;
@@ -149,8 +150,6 @@ var tire2=Physics.body('wheel', {
   }
   */
   //hookObject(roller);
-  
-  var jellyCube=[];
   for(var sx=0;sx<6;sx++){
     for(var sy=0;sy<6;sy++){
       if((!(sx>0&&sx<5))&&(!(sy>0&&sy<5))){
