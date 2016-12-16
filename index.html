@@ -210,12 +210,17 @@ var tire2=Physics.body('wheel', {
     world.on('render', function( data ){
 
         var renderer = data.renderer;
-        for ( var i = 1, l = jellyCube.length; i < l; ++i ){
-
-            renderer.drawLine(jellyCube[ i - 1 ].state.pos, jellyCube[ i ].state.pos, {
-                strokeStyle: '#cb4b16'
-                ,lineWidth: 3
-            });
+        for ( var i = 0, l = jellyCube.length; i < l; i++ ){
+          for ( var j = 0, l = jellyCube.length; j < l; j++ ){
+            if(jellyCube[i]!==jellyCube[j]){
+              if(Math.abs(dist(jellyCube[i].state.pos.x,jellyCube[i].state.pos.y,jellyCube[j].state.pos.x,jellyCube[j].state.pos.y))<15){
+                renderer.drawLine(jellyCube[i].state.pos, jellyCube[j].state.pos, {
+                    strokeStyle: '#cb4b16'
+                    ,lineWidth: 3
+                });
+              }
+            }
+          }
         }
     });
   world.add( rigidConstraints );
