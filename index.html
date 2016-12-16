@@ -131,20 +131,28 @@ var tire2=Physics.body('wheel', {
 }
 */
   hookObject=function(obj){
+    var cfg=[0.6];
+    if(arguments.length>1){
+      cfg=arguments[1];
+    }
     for(var i=0;i<obj.length;i++){
       for(var j=0;j<obj.length;j++){
         if(obj[i] !== obj[j]){
-          rigidConstraints.distanceConstraint(obj[i],obj[j],0.6);
+          rigidConstraints.distanceConstraint(obj[i],obj[j],cfg);
         }
       }
     }
   }
   stringObject=function(obj,thresh){
+    var cfg=[0.6];
+    if(arguments.length>2){
+      cfg=arguments[2];
+    }
     for(var i=0;i<obj.length;i++){
       for(var j=0;j<obj.length;j++){
         if(obj[i] !== obj[j]){
           if(Math.abs(dist(obj[i].state.pos.x,obj[i].state.pos.y,obj[j].state.pos.x,obj[j].state.pos.y))<thresh){
-            rigidConstraints.distanceConstraint(obj[i],obj[j],0.6);
+            rigidConstraints.distanceConstraint(obj[i],obj[j],cfg);
           }
         }
       }
@@ -197,7 +205,7 @@ var tire2=Physics.body('wheel', {
       }
     }
   }
-  stringObject(jellyCube,20);
+  stringObject(jellyCube,20,0.3);
   
   world.add( rigidConstraints );
   world.add(jellyCube);
