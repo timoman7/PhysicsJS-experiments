@@ -5,7 +5,7 @@
 <script src="physicsjs-full.js"></script>
 </head>
 <body>
-  <div id="myDiv"><textarea id="myScript" style="width: 300px; height:200px;" value=""></textarea><button id="updateBtn" onclick="changeScript();userFunction();">Update</button></div>
+  
   <script>
     var PVector = function(e,t,n){this.x=e||0;this.y=t||0;this.z=n||0;};PVector.prototype.fromAngle=function(t,n){if(n===r||n===null){n=new e}n.x=v.cos(t);n.y=v.sin(t);return n;};PVector.prototype.random2D=function(t){return e.fromAngle(n.random()*360,t);};PVector.prototype.random3D=function(t){var i=n.random()*360;var a=n.random()*2-1;var s=n.sqrt(1-a*a);var o=s*v.cos(i);var l=s*v.sin(i);if(t===r||t===null){t=new e(o,l,a)}else{t.set(o,l,a)}return t;};PVector.prototype.dist=function(e,t){return e.dist(t);};PVector.prototype.dot=function(e,t){return e.dot(t);};PVector.prototype.cross=function(e,t){return e.cross(t);};PVector.prototype.sub=function(t,n){return new e(t.x-n.x,t.y-n.y,t.z-n.z);};PVector.prototype.angleBetween=function(e,t){return v.acos(e.dot(t)/(e.mag()*t.mag()));};PVector.prototype.lerp=function(t,n,r){var i=new e(t.x,t.y,t.z);i.lerp(n,r);return i;};PVector.prototype.set=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.get=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.mag=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.magSq=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.setMag=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.add=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.mult=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.div=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.rotate=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.normalize=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.limit=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.heading=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.heading2D=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.array=function(t,n){var r=t.get();r[e](n);return r;};
     var userFunction=function(){};
@@ -296,5 +296,6 @@ world.add( Physics.behavior('sweep-prune') );
 
 });  
 </script>
+  <div id="myDiv"><textarea id="myScript" style="width: 300px; height:200px;" value=""></textarea><button id="updateBtn" onclick="changeScript();userFunction();">Update</button></div>
 </body>
 </html>
