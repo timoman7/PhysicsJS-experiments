@@ -65,8 +65,8 @@ worlda=world;
     });
   // add a circle
   wheely=Physics.body('wheel', {
-        x: 220, // x-coordinate
-        y: 400, // y-coordinate
+        x: 100, // x-coordinate
+        y: 200, // y-coordinate
         vx: 0.2, // velocity in x-direction
         vy: 0.01, // velocity in y-direction
         radius: 20
@@ -178,7 +178,7 @@ var tire2=Physics.body('wheel', {
   for(var sx=0;sx<6;sx++){
     for(var sy=0;sy<6;sy++){
       if((!(sx>0&&sx<5))&&(!(sy>0&&sy<5))){
-        jellyCube.push(Physics.body('circle', {
+        jellyCube.push(Physics.body('wheel', {
           x:(sx*14)+200,
           y:(sy*14)+400,
           vx:0,
@@ -187,7 +187,7 @@ var tire2=Physics.body('wheel', {
         }));
       }
       if((sy<1||sy>4)&&(sx>0&&sx<5)){
-        jellyCube.push(Physics.body('circle', {
+        jellyCube.push(Physics.body('wheel', {
           x:(sx*14)+200,
           y:(sy*14)+400,
           vx:0,
@@ -196,7 +196,7 @@ var tire2=Physics.body('wheel', {
         }));
       }
       if((sx<1||sx>4)&&(sy>0&&sy<5)){
-        jellyCube.push(Physics.body('circle', {
+        jellyCube.push(Physics.body('wheel', {
           x:(sx*14)+200,
           y:(sy*14)+400,
           vx:0,
@@ -234,6 +234,9 @@ var tire2=Physics.body('wheel', {
       world.on('step', function( data ){
         console.log(data);
             wheely.spin( -0.03 );
+            for(var i = 0; i < jellyCube.length; i++){
+              jellyCube[i].spin(-0.03);
+            }
             //tire1.spin( -0.03 );
             //tire2.spin( -0.03 );
             // only execute callback once
@@ -244,6 +247,9 @@ var tire2=Physics.body('wheel', {
       world.on('step', function( data ){
         console.log(data);
             wheely.spin( 0.03 );
+            for(var i = 0; i < jellyCube.length; i++){
+              jellyCube[i].spin(0.03);
+            }
             //tire1.spin( 0.03 );
             //tire2.spin( 0.03 );
             // only execute callback once
