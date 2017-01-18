@@ -25,6 +25,7 @@
       var ret = Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
       return ret;
     };
+    var edgeP;
 Physics(function(world){
 worlda=world;
   var viewWidth = 400;
@@ -46,11 +47,12 @@ worlda=world;
   var viewportBounds = Physics.aabb(0, 0, viewWidth, viewHeight);
 
   // constrain objects to these bounds
-  world.add(Physics.behavior('edge-collision-detection', {
+  edgeP=Physics.behavior('edge-collision-detection', {
       aabb: viewportBounds,
       restitution: 0.66,
       cof: 0.99
-  }));
+  });
+  world.add(edgeP);
   Physics.body('wheel', 'circle', function( parent ){
         
         return {
