@@ -274,8 +274,8 @@ world.add( Physics.behavior('sweep-prune') );
 
   // subscribe to ticker to advance the simulation
   Physics.util.ticker.on(function( time, dt ){
-      document.getElementsByClassName('pjs-layer-main')[0].width="1000";
-      document.getElementsByClassName('pjs-layer-main')[0].height="600";
+      document.getElementsByClassName('pjs-layer-main')[0].width="400";
+      document.getElementsByClassName('pjs-layer-main')[0].height="300";
       world.step( time );
   });
 
