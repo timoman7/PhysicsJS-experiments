@@ -74,6 +74,7 @@ worlda=world;
     rigidConstraints = Physics.behavior('verlet-constraints', {
         iterations: 3
     });
+  /*
   world.add(wheely);
   world.add( Physics.body('convex-polygon', {
     x: 250,
@@ -97,6 +98,7 @@ worlda=world;
         {x: 0, y: -80}
     ]
 }) );
+*/
   /*
   var tire1=Physics.body('wheel', {
         x: 50, // x-coordinate
@@ -175,8 +177,8 @@ var tire2=Physics.body('wheel', {
   }
   */
   //hookObject(roller);
-  for(var sx=0;sx<6;sx++){
-    for(var sy=0;sy<6;sy++){
+  for(var sx=0;sx<10;sx++){
+    for(var sy=0;sy<10;sy++){
       jellyCube.push(Physics.body('wheel', {
         x:(sx*14)+200,
         y:(sy*14)+400,
@@ -186,7 +188,7 @@ var tire2=Physics.body('wheel', {
       }));
     }
   }
-  stringObject(jellyCube,22,0.5);
+  //stringObject(jellyCube,22,0.5);
   
     world.on('render', function( data ){
 
