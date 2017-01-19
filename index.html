@@ -50,7 +50,7 @@ worlda=world;
   edgeP=Physics.behavior('edge-collision-detection', {
       aabb: viewportBounds,
       restitution: 0.6,
-      cof: 0.01,
+      cof: 0.4,
   });
   world.add(edgeP);
   Physics.body('wheel', 'circle', function( parent ){
@@ -73,7 +73,7 @@ worlda=world;
         vy: 0.01, // velocity in y-direction
         radius: 20,
         restitution:0.8,
-        cof:0.01,
+        cof:0.4,
       });
     rigidConstraints = Physics.behavior('verlet-constraints', {
         iterations: 3
@@ -190,7 +190,7 @@ var tire2=Physics.body('wheel', {
         vy:0,
         radius:8,
         restitution:0.8,
-        cof:0.01,
+        cof:0.4,
       }));
     }
   }
