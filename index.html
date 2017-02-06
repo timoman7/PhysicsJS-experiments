@@ -294,10 +294,10 @@ legs[5].asleep=false;
       document.getElementsByClassName('pjs-layer-main')[0].width="400";
       document.getElementsByClassName('pjs-layer-main')[0].height="300";
       world.step( time );
-      legs[4].state.vel.x+=Math.sin(world.time);
-      legs[4].state.vel.y+=Math.cos(world.time);
-      legs[5].state.vel.x+=Math.sin(world.time);
-      legs[5].state.vel.y+=Math.cos(world.time);
+      legs[4].state.vel.x+=Math.sin(world.time)*4;
+      legs[4].state.vel.y+=Math.cos(world.time)*2;
+      legs[5].state.vel.x+=Math.sin(world.time)*4;
+      legs[5].state.vel.y+=Math.cos(world.time)*2;
   });
 
   // start the ticker
