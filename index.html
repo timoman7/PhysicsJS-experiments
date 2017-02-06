@@ -80,8 +80,8 @@ worlda=world;
             // spin the wheel at desired speed
             mmm: function( timeA ){
                 // the wheels are spinning...
-                this.state.vel.x+=Math.sin(timeA)*4;
-                this.state.vel.y+=Math.cos(timeA)*2;
+                this.state.pos.x+=Math.sin(timeA)*4;
+                this.state.pos.y+=Math.cos(timeA)*2;
             }
         };
     });
