@@ -7,6 +7,7 @@
 <body>
   
   <script>
+    var legs = [];
     var PVector = function(e,t,n){this.x=e||0;this.y=t||0;this.z=n||0;};PVector.prototype.fromAngle=function(t,n){if(n===r||n===null){n=new e}n.x=v.cos(t);n.y=v.sin(t);return n;};PVector.prototype.random2D=function(t){return e.fromAngle(n.random()*360,t);};PVector.prototype.random3D=function(t){var i=n.random()*360;var a=n.random()*2-1;var s=n.sqrt(1-a*a);var o=s*v.cos(i);var l=s*v.sin(i);if(t===r||t===null){t=new e(o,l,a)}else{t.set(o,l,a)}return t;};PVector.prototype.dist=function(e,t){return e.dist(t);};PVector.prototype.dot=function(e,t){return e.dot(t);};PVector.prototype.cross=function(e,t){return e.cross(t);};PVector.prototype.sub=function(t,n){return new e(t.x-n.x,t.y-n.y,t.z-n.z);};PVector.prototype.angleBetween=function(e,t){return v.acos(e.dot(t)/(e.mag()*t.mag()));};PVector.prototype.lerp=function(t,n,r){var i=new e(t.x,t.y,t.z);i.lerp(n,r);return i;};PVector.prototype.set=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.get=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.mag=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.magSq=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.setMag=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.add=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.mult=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.div=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.rotate=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.normalize=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.limit=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.heading=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.heading2D=function(t,n){var r=t.get();r[e](n);return r;};PVector.prototype.array=function(t,n){var r=t.get();r[e](n);return r;};
     var userFunction=function(){};
     var changeScript=function(){
@@ -65,6 +66,18 @@ worlda=world;
             }
         };
     });
+  Physics.body('wheel', 'circle', function( parent ){
+        
+        return {
+            // no need for an init
+            
+            // spin the wheel at desired speed
+            spin: function( speed ){
+                // the wheels are spinning...
+                this.state.angular.vel += speed;
+            }
+        };
+    });
   // add a circle
   wheely=Physics.body('wheel', {
         x: 100, // x-coordinate
@@ -78,64 +91,6 @@ worlda=world;
     rigidConstraints = Physics.behavior('verlet-constraints', {
         iterations: 3
     });
-  /*
-  world.add(wheely);
-  world.add( Physics.body('convex-polygon', {
-    x: 250,
-    y: 50,
-    vx: 0.05,
-    vertices: [
-        {x: 0, y: 80},
-        {x: 60, y: 40},
-        {x: 60, y: -40},
-        {x: 0, y: -80}
-    ]
-}) );
-  world.add( Physics.body('convex-polygon', {
-    x: 350,
-    y: 50,
-    vx: 0.05,
-    vertices: [
-        {x: 0, y: 80},
-        {x: 60, y: 40},
-        {x: 60, y: -40},
-        {x: 0, y: -80}
-    ]
-}) );
-*/
-  /*
-  var tire1=Physics.body('wheel', {
-        x: 50, // x-coordinate
-        y: 50, // y-coordinate
-        vx: 0.2, // velocity in x-direction
-        vy: 0.01, // velocity in y-direction
-        radius: 20
-      });
-var tire2=Physics.body('wheel', {
-        x: 130, // x-coordinate
-        y: 50, // y-coordinate
-        vx: 0.2, // velocity in x-direction
-        vy: 0.01, // velocity in y-direction
-        radius: 20
-      });
-  var car=[tire1,tire2];
-  for(var xs=40;xs<=140;xs+=12){
-    car.push(Physics.body('circle', {
-      x:xs,
-      y:10,
-      vx:0.2,
-      vy:0.01,
-      radius:5
-    }));
-    car.push(Physics.body('circle', {
-      x:xs,
-      y:0,
-      vx:0.2,
-      vy:0.01,
-      radius:5
-    }));
-}
-*/
   hookObject=function(obj){
     var cfg=[0.6];
     if(arguments.length>1){
@@ -165,22 +120,6 @@ var tire2=Physics.body('wheel', {
       }
     }
   }
-  //hookObject(car);
-  /*
-  var roller=[];
-  for(var t=1;t<=22;t++){
-    var sx=(25*(Math.sin(t*5.9976)))+200;
-    var sy=(25*(Math.cos(t*5.9976)))+200;
-    roller.push(Physics.body('circle', {
-      x:sx,
-      y:sy,
-      vx:0,
-      vy:0,
-      radius:2
-    }));
-  }
-  */
-  //hookObject(roller);
   for(var sx=0;sx<8;sx++){
     for(var sy=0;sy<8;sy++){
       jellyCube.push(Physics.body('wheel', {
@@ -194,31 +133,95 @@ var tire2=Physics.body('wheel', {
       }));
     }
   }
+  
+  legs.push(addBody(Physics.body('circle', {
+    x: 200,
+    y: 200,
+    vx: 0,
+    vy: 0,
+    radius: 4,
+    restitution: 0.8,
+    cof: 0.4,
+  })));
+  //legs[0]
+  legs.push(addBody(Physics.body('circle', {
+    x: 200,
+    y: 200,
+    vx: 0,
+    vy: 0,
+    radius: 4,
+    restitution: 0.8,
+    cof: 0.4,
+  })));
+  //legs[1]
+  legs.push(addBody(Physics.body('circle', {
+    x: 200,
+    y: 240,
+    vx: 0,
+    vy: 0,
+    radius: 4,
+    restitution: 0.8,
+    cof: 0.4,
+  })));
+  //legs[2]
+  legs.push(addBody(Physics.body('circle', {
+    x: 200,
+    y: 240,
+    vx: 0,
+    vy: 0,
+    radius: 4,
+    restitution: 0.8,
+    cof: 0.4,
+  })));
+  //legs[3]
+  legs.push(addBody(Physics.body('rectangle', {
+    x: 200,
+    y: 280,
+    vx: 0,
+    vy: 0,
+    width: 40,
+    height: 20,
+    mass:4,
+    restitution: 0.8,
+    cof: 0.4,
+  })));
+  //legs[4]
+  legs.push(addBody(Physics.body('rectangle', {
+    x: 200,
+    y: 280,
+    vx: 0,
+    vy: 0,
+    width: 40,
+    height: 20,
+    mass:4,
+    restitution: 0.8,
+    cof: 0.4,
+  })));
+  //legs[5]
+
+
+
+  //0->1
+  //0->2
+  //2->4
+  //1->3
+  //3->5
+  rigidConstraints.distanceConstraint(legs[0], legs[1], [0.6]);
+  rigidConstraints.distanceConstraint(legs[0], legs[2], [0.6]);
+  rigidConstraints.distanceConstraint(legs[2], legs[4], [0.6]);
+  rigidConstraints.distanceConstraint(legs[1], legs[3], [0.6]);
+  rigidConstraints.distanceConstraint(legs[3], legs[5], [0.6]);
+  //stringObject(legs, 20, 0.5);
+  world.add(rigidConstraints);
+  world.add(legs);
   //stringObject(jellyCube,22,0.5);
   
     world.on('render', function( data ){
 
         var renderer = data.renderer;
-      /*
-        for ( var i = 0; i < jellyCube.length; i++ ){
-          for ( var j = 0; j < jellyCube.length; j++ ){
-            if(jellyCube[i]!==jellyCube[j]){
-              if((dist(jellyCube[i].state.pos.x,jellyCube[i].state.pos.y,jellyCube[j].state.pos.x,jellyCube[j].state.pos.y))<15&&
-                (dist(jellyCube[i].state.pos.x,jellyCube[i].state.pos.y,jellyCube[j].state.pos.x,jellyCube[j].state.pos.y))>-15){
-                renderer.drawLine(jellyCube[i].state.pos, jellyCube[j].state.pos, {
-                    strokeStyle: '#000aFF'
-                    ,lineWidth: 1
-                });
-              }
-            }
-          }
-        }
-        */
     });
   world.add( rigidConstraints );
   world.add(jellyCube);
-  //world.add(roller);
-  //world.add(car);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
       world.on('step', function( data ){
@@ -275,7 +278,7 @@ var tire2=Physics.body('wheel', {
     });
   // ensure objects bounce when edge collision is detected
   world.add( Physics.behavior('body-impulse-response') );
-  world.add( Physics.behavior('body-collision-detection') );
+  //world.add( Physics.behavior('body-collision-detection') );
 world.add( Physics.behavior('sweep-prune') );
   // add some gravity
   world.add( Physics.behavior('constant-acceleration') );
