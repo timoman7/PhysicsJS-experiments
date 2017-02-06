@@ -80,7 +80,7 @@ worlda=world;
             // spin the wheel at desired speed
             mmm: function( timeA ){
                 // the wheels are spinning...
-                var newForce = PVector(Math.sin(timeA)*4,Math.cos(timeA)*2);
+                var newForce = new PVector(Math.sin(timeA)*4,Math.cos(timeA)*2);
                 this.applyForce(newForce);
             }
         };
