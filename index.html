@@ -72,15 +72,16 @@ worlda=world;
             }
         };
     });
-  Physics.body('wheel', 'circle', function( parent ){
+  Physics.body('leg', 'rectangle', function( parent ){
         
         return {
             // no need for an init
             
             // spin the wheel at desired speed
-            spin: function( speed ){
+            mmm: function( timeA ){
                 // the wheels are spinning...
-                this.state.angular.vel += speed;
+                this.state.vel.x+=Math.sin(timeA)*4;
+                this.state.vel.y+=Math.cos(timeA)*2;
             }
         };
     });
@@ -294,10 +295,8 @@ legs[5].asleep=false;
       document.getElementsByClassName('pjs-layer-main')[0].width="400";
       document.getElementsByClassName('pjs-layer-main')[0].height="300";
       world.step( time );
-      legs[4].state.vel.x+=Math.sin(world.time)*4;
-      legs[4].state.vel.y+=Math.cos(world.time)*2;
-      legs[5].state.vel.x+=Math.sin(world.time)*4;
-      legs[5].state.vel.y+=Math.cos(world.time)*2;
+      legs[4].mmm(world.time);
+      legs[5].mmm(world.time);
   });
 
   // start the ticker
