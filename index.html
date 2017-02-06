@@ -218,8 +218,6 @@ worlda=world;
   rigidConstraints.distanceConstraint(legs[1], legs[3], [0.6]);
   rigidConstraints.distanceConstraint(legs[3], legs[5], [0.6]);
   //stringObject(legs, 20, 0.5);
-  world.add(rigidConstraints);
-  world.add(legs);
   //stringObject(jellyCube,22,0.5);
   
     world.on('render', function( data ){
@@ -228,6 +226,7 @@ worlda=world;
     });
   world.add( rigidConstraints );
   world.add(jellyCube);
+  world.add(legs);
   window.onkeydown=function(e){
     if(e.keyCode == 37 && e.target == document.body){
       world.on('step', function( data ){
