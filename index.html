@@ -80,8 +80,8 @@ worlda=world;
             // spin the wheel at desired speed
             mmm: function( timeA ){
                 // the wheels are spinning...
-                this.state.pos.x+=Math.sin(timeA)*4;
-                this.state.pos.y+=Math.cos(timeA)*2;
+                var newForce = PVector(Math.sin(timeA)*4,Math.cos(timeA)*2);
+                this.applyForce(newForce);
             }
         };
     });
@@ -288,8 +288,6 @@ worlda=world;
 world.add( Physics.behavior('sweep-prune') );
   // add some gravity
   world.add( Physics.behavior('constant-acceleration') );
-legs[4].sleep(0);
-legs[5].sleep(0);
   // subscribe to ticker to advance the simulation
   Physics.util.ticker.on(function( time, dt ){
       document.getElementsByClassName('pjs-layer-main')[0].width="400";
