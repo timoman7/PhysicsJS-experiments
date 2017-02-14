@@ -19,6 +19,7 @@ var wheely;
 var worlda;
 var jellyCube = [];
 var edgeP;
+function setup(){
 Physics(function(world) {
     worlda = world;
     var viewWidth = 400;
@@ -274,8 +275,6 @@ Physics(function(world) {
     // start the ticker
     Physics.util.ticker.start();
 });
-function setup() {
-
 }
 function draw() {
     
