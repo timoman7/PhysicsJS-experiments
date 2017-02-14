@@ -1,4 +1,9 @@
 var legs = [];
+var sX=0;
+var sY=0;
+var shapes = ["Rectangle","Circle","Star","Triangle"];
+var gui;
+var curCan;
 var userFunction = function() {};
 var globalBodies = [];
 function addBody(obj) {
@@ -275,6 +280,10 @@ Physics(function(world) {
     // start the ticker
     Physics.util.ticker.start();
 });
+    curCan = createCanvas(viewWidth,viewHeight);
+    curCan.elt.style.zIndex=10;
+    gui = createGui("Physics");
+    gui.addGlobals("sX","sY","shapes");
 }
 function draw() {
     
