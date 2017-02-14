@@ -18,10 +18,6 @@ function addBody(obj) {
     var wheely;
     var worlda;
     var jellyCube=[];
-    var dist=function(x1,y1,x2,y2){
-      var ret = Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
-      return ret;
-    };
     var edgeP;
 Physics(function(world){
 worlda=world;
