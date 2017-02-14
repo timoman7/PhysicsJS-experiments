@@ -1,6 +1,8 @@
 var legs = [];
 var sX=0;
 var sY=0;
+var viewWidth;
+var viewHeight;
 var shapes = ["Rectangle","Circle","Star","Triangle"];
 var gui;
 var curCan;
@@ -27,8 +29,8 @@ var edgeP;
 function setup(){
 Physics(function(world) {
     worlda = world;
-    var viewWidth = 400;
-    var viewHeight = 300;
+    viewWidth = 400;
+    viewHeight = 300;
     var renderer = Physics.renderer('canvas', {
         width: viewWidth,
         height: viewHeight,
