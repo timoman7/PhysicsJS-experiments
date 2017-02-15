@@ -289,7 +289,7 @@ Physics(function(world) {
     //Add radius slider for circle
     //Add size sliders for other shapes
     gui.addGlobals("sX","sY","shapes");
-    gui.prototype.setPosition(window.windowWidth-200,0);
+    gui.prototype.setPosition(window.windowWidth-240,0);
 }
 function draw() {
     
