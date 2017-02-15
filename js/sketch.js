@@ -285,7 +285,11 @@ Physics(function(world) {
     curCan = createCanvas(viewWidth,viewHeight);
     curCan.elt.style.zIndex=10;
     gui = createGui("Physics");
+    //Add size sliders for rectangles
+    //Add radius slider for circle
+    //Add size sliders for other shapes
     gui.addGlobals("sX","sY","shapes");
+    gui.prototype.setPosition(window.windowWidth-200,0);
 }
 function draw() {
     
