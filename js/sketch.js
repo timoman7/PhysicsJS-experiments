@@ -47,7 +47,7 @@ Physics(function(world) {
     edgeP = Physics.behavior('edge-collision-detection', {
         aabb: viewportBounds,
         restitution: 0.6,
-        cof: 0.4,
+        cof: 1,
     });
     world.add(edgeP);
     Physics.body('wheel', 'circle', function(parent) {
