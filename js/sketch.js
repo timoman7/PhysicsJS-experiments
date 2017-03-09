@@ -83,7 +83,7 @@ Physics(function(world) {
         // velocity in y-direction
         radius: 20,
         restitution: 0.8,
-        cof: 0.4,
+        cof: 1,
     });
     rigidConstraints = Physics.behavior('verlet-constraints', {
         iterations: 3
@@ -125,7 +125,7 @@ Physics(function(world) {
                 vy: 0,
                 radius: 4,
                 restitution: 0.8,
-                cof: 0.4,
+                cof: 1,
             }));
         }
     }
